@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<p>Home Page</p>}
+          element={<p className='text-h2'>Home Page</p>}
         />
 
         <Route path='/campers'>
