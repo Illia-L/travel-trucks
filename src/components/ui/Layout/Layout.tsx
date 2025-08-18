@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import css from './Layout.module.css';
+import Header from '../Header/Header';
 
 interface LayoutProps {
   children?: ReactNode;
@@ -8,8 +9,9 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   return (
     <div className={css.app}>
-      <header>Header</header>
-      <main>{children}</main>
+      <Header />
+
+      <main className={css.main}>{children}</main>
     </div>
   );
 }

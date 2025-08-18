@@ -18,3 +18,27 @@ img {
   display: block;
   max-width: 100%;
 }
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+/* a:visited {
+  color: inherit;
+} */
+
+button {
+  appearance: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}

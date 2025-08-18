@@ -1,0 +1,36 @@
+.header {
+  background-color: var(--color-inputs);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  color: var(--color-main);
+}
+
+.navLink.active {
+  color: var(--color-button-hover);
+}
+
+.space {
+  width: 136px;
+}

@@ -11,10 +11,18 @@
   --color-badges: #f2f4f7;
   --color-inputs: #f7f7f7;
   --color-white: #ffffff;
+
+  --transition: 150ms ease-in-out;
 }
 
 body {
   font-family: 'Inter Variable', system-ui, sans-serif;
+}
+
+.container {
+  margin-inline: auto;
+  width: 1440px;
+  padding-inline: 64px;
 }
 
 .text-h1 {

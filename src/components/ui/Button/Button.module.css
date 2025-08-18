@@ -1,0 +1,32 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  height: 56px;
+}
+
+.fill {
+  color: var(--color-white);
+  background-color: var(--color-button);
+}
+
+.fill:hover,
+.fill:active,
+.fill:focus-visible {
+  background-color: var(--color-button-hover);
+  transition: background-color var(--transition);
+}
+
+.outline {
+  border: 1px solid var(--color-gray-light);
+  color: var(--color-main);
+  background-color: transparent;
+  transition: border-color var(--transition);
+}
+
+.outline:hover,
+.outline:active,
+.outline:focus-visible {
+  border-color: var(--color-button-hover);
+}

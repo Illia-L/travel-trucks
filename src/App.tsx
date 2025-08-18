@@ -1,5 +1,6 @@
 import Layout from './components/ui/Layout/Layout';
 import { Route, Routes } from 'react-router';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<p className='text-h2'>Home Page</p>}
+          element={<HomePage/>}
         />
 
         <Route path='/campers'>
