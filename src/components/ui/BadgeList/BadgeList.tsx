@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import type { Product } from '../../../utils/api';
 import Icon from '../Icon/Icon';
 import css from './BadgeList.module.css';
+import type { Product } from '../../../types/global';
 
 interface BadgeListProps {
   product: Product;
