@@ -1,6 +1,7 @@
 import Layout from './components/ui/Layout/Layout';
 import { Route, Routes } from 'react-router';
 import HomePage from './pages/HomePage/HomePage';
+import CatalogPage from './pages/CatalogPage/CatalogPage';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
         <Route path='/campers'>
           <Route
             index
-            element={<p>Catalog Page</p>}
+            element={<CatalogPage/>}
           />
 
           <Route

@@ -1,0 +1,9 @@
+.row {
+  display: flex;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.sidebar {
+  flex: 0 0 360px;
+}
