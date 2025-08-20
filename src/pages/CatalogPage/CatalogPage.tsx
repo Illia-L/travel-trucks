@@ -11,8 +11,8 @@ import css from './CatalogPage.module.css';
 import { loadProducts } from '../../redux/products/operations';
 import Button from '../../components/ui/Button/Button';
 import { incrementPage, setFilter } from '../../redux/products/slice';
-import { convertSearchToObject } from '../../utils/helpers';
 import { useLocation } from 'react-router';
+import type { Filter } from '../../types/global';
 
 function CatalogPage() {
   const [isLoading, setIsloading] = useState(false);
@@ -38,11 +38,13 @@ function CatalogPage() {
   useEffect(() => {
     if (!isInitialRender.current) return;
 
-    const filterFromQueryString = convertSearchToObject(search);
-    const isFilterDue = Object.keys(filterFromQueryString).reduce(
-      (acc, key) => acc && filter[key] === filterFromQueryString[key],
-      true
-    );
+    const filterFromQueryString = Object.fromEntries(
+      new URLSearchParams(search)
+    ) as Partial<Filter>;
+
+    const isFilterDue = (
+      Object.keys(filterFromQueryString) as (keyof Filter)[]
+    ).every(key => filter[key] === filterFromQueryString[key]);
 
     if (!isFilterDue) dispatch(setFilter({ ...filterFromQueryString }));
 
