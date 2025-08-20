@@ -54,3 +54,22 @@ export type Filter = {
   page: number;
   perPage: number;
 };
+
+type FeatureKey =
+  | 'transmission'
+  | 'engine'
+  | 'AC'
+  | 'bathroom'
+  | 'kitchen'
+  | 'TV'
+  | 'radio'
+  | 'refrigerator'
+  | 'microwave'
+  | 'gas'
+  | 'water';
+
+type LabeledItem<K extends FeatureKey = FeatureKey> = {
+  label: string;
+  key: K;
+  value: Filter[K];
+};

@@ -10,21 +10,23 @@ function VehicleEquipmentFilters() {
 
   const filterLabels = filterLabledItems.map(item => item.label);
   const selectedFilters = filterLabledItems
-    .filter(item => !!filter[Object.keys(item)[1]])
+    .filter(item => !!filter[item.key])
     .map(item => item.label);
 
   const handleClick = (label: string) => {
     const filterLabeledObj = filterLabledItems.find(
       item => item.label === label
     );
-    const filterLabeledObjCopy = { ...filterLabeledObj };
 
-    delete filterLabeledObjCopy.label;
+    if (!filterLabeledObj)
+      return console.log('Label and filterLabledItems missmatch');
+
+    const { key, value } = filterLabeledObj;
 
     if (selectedFilters.includes(label)) {
-      dispatch(removeFilter(Object.keys(filterLabeledObjCopy)[0]));
+      dispatch(removeFilter(key));
     } else {
-      dispatch(setFilter(filterLabeledObjCopy));
+      dispatch(setFilter({ [key]: value }));
     }
   };
 
