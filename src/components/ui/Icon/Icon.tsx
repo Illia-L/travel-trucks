@@ -1,3 +1,7 @@
+
+import clsx from "clsx";
+import css from './Icon.module.css'
+
 interface IconProps {
   id: string;
   width: number;
@@ -10,7 +14,8 @@ function Icon({ id, width, height, className = '' }: IconProps) {
     <svg
       width={width}
       height={height}
-      className={className}
+      style={{strokeWidth: '1px'}}
+      className={clsx(css.icon, className)}
     >
       <use href={`/img/icons/icons.svg#${id}`} />
     </svg>

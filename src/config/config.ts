@@ -1,15 +1,15 @@
-import type { FilterLabledItem } from '../types/global';
 
-export const filterLabledItem: FilterLabledItem[] = [
-  { label: 'automatic', key: 'transmission', value: 'automatic' },
-  { label: 'petrol', key: 'engine', value: 'petrol' },
-  { label: 'AC', key: 'AC', value: true },
-  { label: 'bathroom', key: 'bathroom', value: true },
-  { label: 'kitchen', key: 'kitchen', value: true },
-  { label: 'TV', key: 'TV', value: true },
-  { label: 'radio', key: 'radio', value: true },
-  { label: 'refrigerator', key: 'refrigerator', value: true },
-  { label: 'microwave', key: 'microwave', value: true },
-  { label: 'gas', key: 'gas', value: true },
-  { label: 'water', key: 'water', value: true },
+export const filterLabledItems = [
+  { label: 'automatic', transmission: 'automatic' },
+  { label: 'petrol', engine: 'petrol' },
+  { label: 'AC', AC: true },
+  { label: 'bathroom', bathroom: true },
+  { label: 'kitchen', kitchen: true },
+  { label: 'TV', TV: true },
+  { label: 'radio', radio: true },
+  { label: 'refrigerator', refrigerator: true },
+  { label: 'microwave', microwave: true },
+  { label: 'gas', gas: true },
+  { label: 'water', water: true },
 ];
+

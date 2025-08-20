@@ -1,0 +1,10 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex: 0 0 360px;
+}
+
+.searchButton {
+  width: 166px;
+}

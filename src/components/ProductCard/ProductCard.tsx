@@ -4,12 +4,20 @@ import BadgeList from '../ui/BadgeList/BadgeList';
 import Icon from '../ui/Icon/Icon';
 import css from './ProductCard.module.css';
 import type { Product } from '../../types/global';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { selectFavouriteProducts } from '../../redux/products/selectors';
+import { toggleFavouriteProduct } from '../../redux/products/slice';
 
 interface ProductCardProps {
   product: Product;
 }
 
 function ProductCard({ product }: ProductCardProps) {
+  const dispatch = useAppDispatch();
+  const favouriteProducts = useAppSelector(selectFavouriteProducts);
+
+  const isFavourite = favouriteProducts.includes(product.id);
+
   return (
     <div className={css.card}>
       <div className={css.imageContainer}>
@@ -34,12 +42,14 @@ function ProductCard({ product }: ProductCardProps) {
               <button
                 className={css.buttonFavourite}
                 aria-label='add to favourite'
+                onClick={() => dispatch(toggleFavouriteProduct(product.id))}
               >
                 {/* todo Enlarge button clickable area */}
                 <Icon
                   id='heart'
                   width={26}
                   height={24}
+                  className={clsx(isFavourite && css.favourite)}
                 />
               </button>
             </div>
@@ -52,7 +62,7 @@ function ProductCard({ product }: ProductCardProps) {
                 width={16}
                 height={16}
               />
-              
+
               <span className='text-body-underline'>
                 {`${product.rating}(${product.reviews.length} Reviews)`}
               </span>
@@ -78,7 +88,12 @@ function ProductCard({ product }: ProductCardProps) {
           <BadgeList product={product} />
         </div>
 
-        <AppLink to={`/products/${product.id}`} className={css.showMore}>Show more</AppLink>
+        <AppLink
+          to={`/products/${product.id}`}
+          className={css.showMore}
+        >
+          Show more
+        </AppLink>
       </div>
     </div>
   );

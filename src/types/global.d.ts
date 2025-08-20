@@ -1,7 +1,3 @@
-type ProductForm = 'Van' | 'Fully Integrated' | 'Alcove';
-type ProductTransmission = 'automatic' | 'manual';
-type ProductEngine = 'diesel' | 'petrol';
-
 type ProductGalleryItem = {
   thumb: string;
   original: string;
@@ -20,14 +16,14 @@ export type Product = {
   rating: number;
   location: string;
   description: string;
-  form: ProductForm;
+  form: 'Van' | 'Fully Integrated' | 'Alcove';
   length: string;
   width: string;
   height: string;
   tank: string;
   consumption: string;
-  transmission: ProductTransmission;
-  engine: ProductEngine;
+  transmission: 'automatic' | 'manual';
+  engine: 'diesel' | 'petrol';
   AC: boolean;
   bathroom: boolean;
   kitchen: boolean;
@@ -41,12 +37,20 @@ export type Product = {
   reviews: ProductReviewItem[];
 };
 
-export type FilterLabledItem = {
-  [K in keyof Product]: {
-    label: string;
-    key: K;
-    value: Product[K];
-  };
-}[keyof Product];
-
-export type FilterItem = Pick<FilterLabledItem, 'key' | 'value'>;
+export type Filter = {
+  location?: string;
+  form: 'Van' | 'Fully Integrated' | 'Alcove';
+  transmission?: 'automatic';
+  engine?: 'petrol';
+  AC?: 'true';
+  bathroom?: 'true';
+  kitchen?: 'true';
+  TV?: 'true';
+  radio?: 'true';
+  refrigerator?: 'true';
+  microwave?: 'true';
+  gas?: 'true';
+  water?: 'true';
+  page: number;
+  perPage: number;
+};

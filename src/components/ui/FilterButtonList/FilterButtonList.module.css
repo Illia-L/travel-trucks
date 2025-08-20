@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-light);
+  width: 112px;
+  height: 96px;
+  transition: border-color var(--transition);
+}
+
+.selected {
+  border-color: var(--color-button-hover);
+}

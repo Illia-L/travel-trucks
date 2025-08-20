@@ -3,13 +3,14 @@ import type { Product } from '../types/global';
 
 axios.defaults.baseURL = 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io';
 
-type AllProductsData = {
+export type AllProductsData = {
   total: number;
   items: Product[];
 };
 
-export const fetchAllProducts = async (filter = {}) => {
-  const response = await axios.get<AllProductsData>('/campers', filter);
+export const fetchAllProducts = async (params = {}) => {
+  console.log({params});
+  const response = await axios.get<AllProductsData>('/campers', {params});
 
   return response.data;
 };
