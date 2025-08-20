@@ -39,7 +39,7 @@ export type Product = {
 
 export type Filter = {
   location?: string;
-  form: 'Van' | 'Fully Integrated' | 'Alcove';
+  form?: 'Van' | 'Fully Integrated' | 'Alcove';
   transmission?: 'automatic';
   engine?: 'petrol';
   AC?: 'true';
@@ -54,6 +54,8 @@ export type Filter = {
   page: number;
   perPage: number;
 };
+
+export type Query = Omit<Filter, 'page'|'perPage'>
 
 type FeatureKey =
   | 'transmission'

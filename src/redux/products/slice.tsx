@@ -32,7 +32,7 @@ const productSlice = createSlice({
       Object.assign(state.filter, action.payload);
     },
 
-    removeFilter(state, action) {
+    removeFilter(state, action: PayloadAction<keyof Filter>) {
       delete state.filter[action.payload];
     },
 
