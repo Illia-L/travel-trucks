@@ -10,7 +10,8 @@ function VehicleTypeFilter() {
   const dispatch = useAppDispatch();
   const selectedVehicleForm = useAppSelector(selectVehicleFormFilter);
 
-  const selectedPosition = filterValues.indexOf(selectedVehicleForm);
+  const selectedPosition = selectedVehicleForm ? filterValues.indexOf(selectedVehicleForm) : -1;
+
   const selectedLabel = filterLabels[selectedPosition];
 
   const handleClick = (label: string) => {
