@@ -4,6 +4,12 @@
   justify-content: center;
   border-radius: 200px;
   height: 56px;
+  transition: opacity var(--transition);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: default;
 }
 
 .fill {
@@ -11,9 +17,9 @@
   background-color: var(--color-button);
 }
 
-.fill:hover,
-.fill:active,
-.fill:focus-visible {
+.fill:not(:disabled):hover,
+.fill:not(:disabled):active,
+.fill:not(:disabled):focus-visible {
   background-color: var(--color-button-hover);
   transition: background-color var(--transition);
 }
@@ -25,8 +31,9 @@
   transition: border-color var(--transition);
 }
 
-.outline:hover,
-.outline:active,
-.outline:focus-visible {
+.outline:not(:disabled):hover,
+.outline:not(:disabled):active,
+.outline:not(:disabled):focus-visible {
   border-color: var(--color-button-hover);
 }
+

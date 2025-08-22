@@ -6,14 +6,13 @@ export type FilterButtoListProps = {
   filters: string[];
   selectedFilters: string[];
   onClick: (filter: string) => void;
-}
+};
 
 function FilterButtonList({
   filters,
   selectedFilters,
   onClick,
 }: FilterButtoListProps) {
-  console.log({filters});
   return (
     <ul className={css.list}>
       {filters.map((filter, i) => (

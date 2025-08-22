@@ -1,18 +1,26 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import css from './LocationFilter.module.css';
 import clsx from 'clsx';
 import Icon from '../ui/Icon/Icon';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setFilter } from '../../redux/products/slice';
+import { selectFilter } from '../../redux/products/selectors';
 
 function LocationFilter() {
   const [value, setValue] = useState('');
-  const dispatch = useAppDispatch()
+  const locationFilter = useAppSelector(selectFilter).location;
+  const dispatch = useAppDispatch();
   const id = useId();
 
+  useEffect(() => {
+    if (!locationFilter) return;
+
+    setValue(v => (v === locationFilter ? v : locationFilter));
+  }, [locationFilter]);
+
   const handleBlur = () => {
-    dispatch(setFilter({location: value}))
-  }
+    dispatch(setFilter({ location: value }));
+  };
 
   return (
     <section>

@@ -1,4 +1,6 @@
 .form {
+  border-radius: 10px;
+  border: 1px solid var(--color-gray-light);
   padding: 44px 57px;
 }
 
@@ -32,7 +34,6 @@
 
 .datePicker {
   position: absolute;
-  /* top: 60px; */
   left: 50%;
   transform: translateX(-50%);
   display: none;
@@ -44,4 +45,5 @@
 
 .textarea {
   height: 118px;
+  resize: none;
 }

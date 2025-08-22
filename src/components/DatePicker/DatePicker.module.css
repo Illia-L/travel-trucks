@@ -2,7 +2,9 @@
   position: relative;
   border-radius: 12px;
   border: 1px solid var(--color-text);
-  width: 276px;
+  width: 278px;
+  background-color: #fff;
+  color: var(--color-main);
 }
 
 .box::before {
@@ -28,6 +30,10 @@
   justify-content: space-between;
 }
 
+.monthButton {
+  color: var(--color-text);
+}
+
 .month {
   line-height: 1.2;
   font-size: 16;
@@ -46,6 +52,7 @@
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
+  color: var(--color-text);
 }
 
 .dates {
@@ -60,8 +67,15 @@
   flex: 0 0 36px;
   border-radius: 50px;
   height: 32px;
+  line-height: 1.2;
+  font-size: 14px;
   text-align: center;
-  transition: background-color var(--transition), color var(--transition)
+  color: inherit;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.otherMonthDate {
+  color: var(--color-text);
 }
 
 .selected {

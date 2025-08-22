@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import css from './Button.module.css';
 import clsx from 'clsx';
-import { FadeLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 
 export type ButtonVariants = 'fill' | 'outline';
 
@@ -11,7 +11,7 @@ interface ButtonProps {
   variant?: ButtonVariants;
   isLoading?: boolean;
   className?: string;
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 function Button({
@@ -20,7 +20,7 @@ function Button({
   isLoading = false,
   className = '',
   children,
-  onClick
+  onClick,
 }: ButtonProps) {
   return (
     <button
@@ -30,7 +30,11 @@ function Button({
       onClick={onClick}
     >
       {isLoading ? (
-        <FadeLoader color={variant === 'fill' ? '#fff' : '#000'} />
+        <PulseLoader
+          size={7}
+          margin={4}
+          color={variant === 'fill' ? '#fff' : '#9599A1'}
+        />
       ) : (
         children
       )}

@@ -26,6 +26,7 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
   }, [selectedDate]);
 
   const formatedMonthDate = new Date(monthDate);
+  const currentMonthNumber = formatedMonthDate.getMonth();
   const displayedMonth = formatedMonthDate.toLocaleString('en-US', {
     month: 'long',
   });
@@ -42,7 +43,6 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
   );
 
   const changeMonth = (direction: number) => {
-    const currentMonthNumber = formatedMonthDate.getMonth();
     const updatedMonthNumber = currentMonthNumber + direction;
 
     setMonthDate(formatedMonthDate.setMonth(updatedMonthNumber));
@@ -55,6 +55,7 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
           <button
             type='button'
             onClick={() => changeMonth(-1)}
+            className={css.monthButton}
           >
             <Icon
               id='arrow-left'
@@ -68,6 +69,7 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
           <button
             type='button'
             onClick={() => changeMonth(1)}
+            className={css.monthButton}
           >
             <Icon
               id='arrow-right'
@@ -92,7 +94,8 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
           <button
             className={clsx(
               css.dateButton,
-              dateStr === selectedDate && css.selected
+              dateStr === selectedDate && css.selected,
+              (+dateStr.split('-')[1] !== currentMonthNumber + 1) && css.otherMonthDate
               // todo Style dates of not current month according to design
             )}
             type='button'

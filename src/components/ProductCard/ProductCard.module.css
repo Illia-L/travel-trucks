@@ -38,12 +38,11 @@
 }
 
 .favourite {
-  stroke: var(--color-button)
+  stroke: var(--color-button);
 }
 
 .description {
   display: -webkit-box;
-  margin-top: 24px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   line-clamp: 1;

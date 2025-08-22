@@ -9,7 +9,6 @@ export type AllProductsData = {
 };
 
 export const fetchAllProducts = async (params = {}) => {
-  console.log({params});
   const response = await axios.get<AllProductsData>('/campers', {params});
 
   return response.data;

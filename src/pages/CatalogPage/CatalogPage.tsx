@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -6,6 +6,7 @@ import {
   selectAllProducts,
   selectFilter,
   selectHasNextPage,
+  selectIsLoading,
 } from '../../redux/products/selectors';
 import css from './CatalogPage.module.css';
 import { loadProducts } from '../../redux/products/operations';
@@ -13,9 +14,11 @@ import Button from '../../components/ui/Button/Button';
 import { incrementPage, setFilter } from '../../redux/products/slice';
 import { useLocation } from 'react-router';
 import type { Filter } from '../../types/global';
+import { PulseLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
 
 function CatalogPage() {
-  const [isLoading, setIsloading] = useState(false);
+  const isLoading = useAppSelector(selectIsLoading);
   const products = useAppSelector(selectAllProducts);
   const hasNextPage = useAppSelector(selectHasNextPage);
   const filter = useAppSelector(selectFilter);
@@ -23,17 +26,13 @@ function CatalogPage() {
   const dispatch = useAppDispatch();
   const isInitialRender = useRef(true);
 
-  const getProducts = async () => {
+  const getProducts = useCallback(async () => {
     try {
-      setIsloading(true);
-      await dispatch(loadProducts());
+      await dispatch(loadProducts()).unwrap();
     } catch {
-      console.log('There was an error fetching products');
-      // todo show toast message on error
-    } finally {
-      setIsloading(false);
+       toast.error('Something went wrong. Try again later.')
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isInitialRender.current) return;
@@ -51,7 +50,7 @@ function CatalogPage() {
     getProducts();
 
     isInitialRender.current = false;
-  }, [filter, search, isInitialRender]);
+  }, [filter, search, isInitialRender, getProducts, dispatch]);
 
   const handleLoadMore = () => {
     dispatch(incrementPage());
@@ -62,13 +61,23 @@ function CatalogPage() {
   return (
     <div className='container'>
       <div className={css.row}>
-        <Sidebar />
+        <Sidebar isLoading={isLoading} />
 
         <div className={css.products}>
-          {products.length ? (
-            <ProductList products={products} />
-          ) : (
-            <p>No campers found</p>
+          {!!products.length && <ProductList products={products} />}
+
+          {!products.length && isLoading && (
+            <PulseLoader
+              size={12}
+              margin={5}
+              speedMultiplier={0.7}
+              color='#9599A1'
+              className={css.loader}
+            />
+          )}
+
+          {!products.length && !isLoading && (
+            <p className={css.notFound}>No campers found</p>
           )}
 
           {hasNextPage && (

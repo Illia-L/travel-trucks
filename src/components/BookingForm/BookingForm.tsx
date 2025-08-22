@@ -8,6 +8,7 @@ import Button from '../ui/Button/Button';
 import DatePicker, { type ISODateString } from '../DatePicker/DatePicker';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useId } from 'react';
+import toast from 'react-hot-toast';
 
 const validationSchema = yup.object({
   name: yup
@@ -29,10 +30,7 @@ const validationSchema = yup.object({
 });
 
 const isValidDate = (date: string | undefined) => {
-  console.log('isValidDate runs...');
-  console.log({ date });
   if (!date) return;
-  console.log({ matchesRegExp: !/^\d{4}-\d{2}-\d{2}$/.test(date) });
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
 
@@ -65,10 +63,9 @@ function BookingForm() {
     ? (selectedDate as ISODateString)
     : undefined;
 
-  console.log({ selectedDate, validSelectedDate });
-
   const onSubmit = () => {
     reset();
+    toast.success('Request successfully sent')
   };
 
   const onPickDate = (date: ISODateString) =>

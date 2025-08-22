@@ -7,10 +7,13 @@ import { persistor } from './redux/store';
 import ProductPage from './pages/ProductPage/ProductPage';
 import Features from './components/Features/Features';
 import Reviews from './components/Reviews/Reviews';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <Layout>
+      <div><Toaster position='top-right'/></div>
+      
       <Routes>
         <Route
           path='/'

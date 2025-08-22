@@ -9,18 +9,28 @@ import LocationFilter from '../LocationFilter/LocationFilter';
 import { selectFilter } from '../../redux/products/selectors';
 import { convertObjectToQueryString } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
+import toast from 'react-hot-toast';
 
-function Sidebar() {
+type SidebarProps = {
+  isLoading: boolean;
+};
+
+function Sidebar({ isLoading }: SidebarProps) {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const filter = useAppSelector(selectFilter);
 
   const queryString = convertObjectToQueryString(filter);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     dispatch(setFilter({ page: 1 }));
-    navigate(`/campers${queryString}`)
-    dispatch(loadProducts());
+    navigate(`/campers${queryString}`);
+
+    try {
+      await dispatch(loadProducts()).unwrap();
+    } catch {
+      toast.error('Something went wrong. Try again later.')
+    }
   };
 
   return (
@@ -37,6 +47,7 @@ function Sidebar() {
       <Button
         className={css.searchButton}
         onClick={handleClick}
+        isLoading={isLoading}
       >
         Search
       </Button>

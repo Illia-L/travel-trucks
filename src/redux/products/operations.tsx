@@ -27,6 +27,7 @@ export const loadProducts = createAsyncThunk<
 
     return data;
   } catch {
+    console.log('Error caught in operations...');
     return rejectWithValue('');
   }
 });
