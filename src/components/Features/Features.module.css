@@ -1,0 +1,32 @@
+.box {
+  border-radius: 10px;
+  padding: 44px 52px;
+  background-color: var(--color-inputs);
+}
+
+.badge {background-color: var(--color-gray);}
+
+.detailTitle {
+  margin-top: 100px;
+}
+
+.hr {
+  margin-top: 24px;
+  border: none;
+  height: 1px;
+  background-color: var(--color-gray-light);
+}
+
+.dataList {
+  margin-top: 24px;
+}
+
+.dataItem {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dataItem:first-child {
+  margin-top: 0;
+}

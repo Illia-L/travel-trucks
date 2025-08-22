@@ -1,0 +1,26 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nameRatingBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rating {
+  margin-top: 4px;
+}
+
+.comment {
+  margin-top: 16px;
+  color: var(--color-text);
+}

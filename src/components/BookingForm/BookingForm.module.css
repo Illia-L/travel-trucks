@@ -1,0 +1,47 @@
+.form {
+  padding: 44px 57px;
+}
+
+.desc {
+  margin-top: 8px;
+}
+
+.inputsBox {
+  margin-top: 24px;
+}
+
+.submit {
+  margin-top: 24px;
+  width: 166px;
+}
+
+.inputDateGroup {
+  position: relative;
+}
+
+.inputDate {
+  appearance: textfield;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.inputDate::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.datePicker {
+  position: absolute;
+  /* top: 60px; */
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.inputDateGroup:focus-within .datePicker {
+  display: block;
+}
+
+.textarea {
+  height: 118px;
+}

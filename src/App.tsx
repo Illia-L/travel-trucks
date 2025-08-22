@@ -4,6 +4,9 @@ import HomePage from './pages/HomePage/HomePage';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './redux/store';
+import ProductPage from './pages/ProductPage/ProductPage';
+import Features from './components/Features/Features';
+import Reviews from './components/Reviews/Reviews';
 
 function App() {
   return (
@@ -26,8 +29,18 @@ function App() {
 
           <Route
             path=':id'
-            element={<p>Camper Page</p>}
-          />
+            element={<ProductPage />}
+          >
+            <Route
+              index
+              element={<Features />}
+            />
+
+            <Route
+              path='reviews'
+              element={<Reviews />}
+            />
+          </Route>
         </Route>
       </Routes>
     </Layout>

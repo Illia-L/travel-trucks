@@ -1,0 +1,11 @@
+.ratingLocationRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.reviews,
+.location {
+  display: flex;
+  gap: 4px;
+}

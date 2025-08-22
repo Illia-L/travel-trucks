@@ -1,0 +1,23 @@
+.box {
+  margin-top: 14px;
+}
+
+.input {
+  border-radius: 12px;
+  width: 100%;
+  padding: 18px;
+  background-color: var(--color-inputs);
+}
+
+.error {
+  height: 0;
+  line-height: 20px;
+  font-size: 14px;
+  color: var(--color-button);
+  transition: height var(--transition);
+}
+
+.showError {
+  height: 36px;
+  padding: 4px 0 12px;
+}

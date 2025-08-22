@@ -7,6 +7,8 @@ import type { Product } from '../../types/global';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectFavouriteProducts } from '../../redux/products/selectors';
 import { toggleFavouriteProduct } from '../../redux/products/slice';
+import RatingLocationBLock from '../ui/RatingLocationBLock/RatingLocationBLock';
+import { formatPrice } from '../../utils/helpers';
 
 interface ProductCardProps {
   product: Product;
@@ -36,8 +38,7 @@ function ProductCard({ product }: ProductCardProps) {
             <h3 className='text-h2'>{product.name}</h3>
 
             <div className={css.priceBox}>
-              <p className='text-h2'>€{product.price}</p>
-              {/* todo Make price float with point */}
+              <p className='text-h2'>{formatPrice(product.price)}</p>
 
               <button
                 className={css.buttonFavourite}
@@ -55,28 +56,7 @@ function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
 
-          <div className={clsx('text-body', css.ratingLocationRow)}>
-            <div className={css.reviews}>
-              <Icon
-                id='star'
-                width={16}
-                height={16}
-              />
-
-              <span className='text-body-underline'>
-                {`${product.rating}(${product.reviews.length} Reviews)`}
-              </span>
-            </div>
-
-            <div className={css.location}>
-              <Icon
-                id='map'
-                width={16}
-                height={16}
-              />
-              {product.location}
-            </div>
-          </div>
+          <RatingLocationBLock product={product} />
         </div>
 
         <p className={clsx('text-body', css.description)}>
@@ -89,7 +69,7 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <AppLink
-          to={`/products/${product.id}`}
+          to={`/campers/${product.id}`}
           className={css.showMore}
         >
           Show more

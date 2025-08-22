@@ -1,0 +1,70 @@
+.box {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid var(--color-text);
+  width: 276px;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  border-left: 1px solid var(--color-text);
+  border-top: 1px solid var(--color-text);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  transform: rotate(45deg) translate(-50%, calc(-50% + 1px));
+}
+
+.header {
+  border-bottom: 1px solid var(--color-text);
+  padding: 12px;
+}
+
+.monthRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month {
+  line-height: 1.2;
+  font-size: 16;
+  font-weight: 600;
+}
+
+.weekdays {
+  display: flex;
+  margin-top: 12px;
+}
+
+.weekday {
+  flex: 0 0 36px;
+  line-height: 1.2;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  padding: 11px;
+}
+
+.dateButton {
+  display: block;
+  flex: 0 0 36px;
+  border-radius: 50px;
+  height: 32px;
+  text-align: center;
+  transition: background-color var(--transition), color var(--transition)
+}
+
+.selected {
+  color: var(--color-inputs);
+  background-color: var(--color-text);
+}

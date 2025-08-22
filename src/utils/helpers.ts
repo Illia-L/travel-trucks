@@ -13,3 +13,5 @@ params.append(String(key), String(value as unknown as string));
 
 return `?${params.toString()}`;
 };
+
+export const formatPrice = (price:number) => `€${price.toFixed(2)}`

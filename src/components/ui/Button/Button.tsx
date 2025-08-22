@@ -11,7 +11,7 @@ interface ButtonProps {
   variant?: ButtonVariants;
   isLoading?: boolean;
   className?: string;
-  onClick: () => void
+  onClick?: () => void
 }
 
 function Button({

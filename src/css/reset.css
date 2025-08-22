@@ -5,6 +5,12 @@
 }
 
 body,
+dl,
+dd,
+dt,
+input,
+textarea,
+form,
 p,
 ul,
 li,
@@ -31,9 +37,6 @@ a {
   font: inherit;
   text-decoration: none;
 }
-/* a:visited {
-  color: inherit;
-} */
 
 button {
   appearance: none;
@@ -46,7 +49,8 @@ button {
   cursor: pointer;
 }
 
-input {
+input,
+textarea {
   /* all: unset; */
   font: inherit;
   color: inherit;
