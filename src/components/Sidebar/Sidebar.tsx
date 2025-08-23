@@ -9,7 +9,6 @@ import LocationFilter from '../LocationFilter/LocationFilter';
 import { selectFilter } from '../../redux/products/selectors';
 import { convertObjectToQueryString } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
-import toast from 'react-hot-toast';
 
 type SidebarProps = {
   isLoading: boolean;
