@@ -28,6 +28,7 @@ function CatalogPage() {
 
   useEffect(() => {
     if (!isInitialRender.current) return;
+    if (products?.length) return;
 
     const filterFromQueryString = Object.fromEntries(
       new URLSearchParams(search)
@@ -42,7 +43,7 @@ function CatalogPage() {
     dispatch(loadProducts());
 
     isInitialRender.current = false;
-  }, [filter, search, isInitialRender, dispatch]);
+  }, [filter, search, isInitialRender, dispatch, products]);
 
   const getScrollToPosition = () => {
     if (scrollAnchorRef.current) {
