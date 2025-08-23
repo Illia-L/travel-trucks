@@ -24,6 +24,7 @@ function CatalogPage() {
   const { search } = useLocation();
   const dispatch = useAppDispatch();
   const isInitialRender = useRef(true);
+  const scrollAnchorRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     if (!isInitialRender.current) return;
@@ -43,10 +44,30 @@ function CatalogPage() {
     isInitialRender.current = false;
   }, [filter, search, isInitialRender, dispatch]);
 
-  const handleLoadMore = () => {
-    dispatch(incrementPage());
+  const getScrollToPosition = () => {
+    if (scrollAnchorRef.current) {
+      const button = scrollAnchorRef.current;
+      const rect = button.getBoundingClientRect();
+      const scrollToPos = rect.top + window.scrollY - 50;
 
-    dispatch(loadProducts());
+      return scrollToPos;
+    }
+  };
+
+  const scrollToPos = (pos: number) => {
+    setTimeout(() => {
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleLoadMore = async () => {
+    dispatch(incrementPage());
+    const positionToScrollTo = getScrollToPosition();
+    await dispatch(loadProducts());
+
+    if (!positionToScrollTo) return;
+
+    scrollToPos(positionToScrollTo);
   };
 
   return (
@@ -76,14 +97,18 @@ function CatalogPage() {
               <p className={css.notFound}>No campers found</p>
             )}
             {hasNextPage && (
-              <Button
-                className={css.loadMore}
-                variant='outline'
-                isLoading={isLoading}
-                onClick={handleLoadMore}
-              >
-                Load more
-              </Button>
+              <>
+                <a ref={scrollAnchorRef}></a>
+
+                <Button
+                  className={css.loadMore}
+                  variant='outline'
+                  isLoading={isLoading}
+                  onClick={handleLoadMore}
+                >
+                  Load more
+                </Button>
+              </>
             )}
           </div>
         </div>

@@ -1,5 +1,8 @@
 .header {
+  position: sticky;
+  top: 0;
   background-color: var(--color-inputs);
+  z-index: 100;
 }
 
 .row {

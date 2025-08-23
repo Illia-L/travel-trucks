@@ -14,7 +14,7 @@ type ProductsState = {
 const initialState: ProductsState = {
   items: [],
   favouriteProducts: [],
-  filter: { page: 1, perPage: 2 },
+  filter: { page: 1, perPage: 5 },
   totalItems: 0,
   isLoading: false,
 };
