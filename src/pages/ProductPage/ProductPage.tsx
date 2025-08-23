@@ -8,6 +8,7 @@ import { formatPrice } from '../../utils/helpers';
 import clsx from 'clsx';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import TabsControls from '../../components/TabsControls/TabsControls';
+import NotFound from '../../components/ui/NotFound/NotFound';
 
 function ProductPage() {
   const [product, setProduct] = useState<Product | null | undefined>(null);
@@ -28,8 +29,7 @@ function ProductPage() {
 
         setProduct(product);
       } catch {
-        console.log('Fetching product error');
-        // todo show toast error message
+        setProduct(undefined);
       } finally {
         setIsLoading(false);
       }
@@ -38,12 +38,16 @@ function ProductPage() {
     getProduct();
   }, [id]);
 
-  if (isLoading) return <p>Loading...</p>;
-
   if (product === null) return null;
 
-  if (product === undefined) return <p>Page not found</p>;
-  // todo NotFoundPage
+  if (product === undefined)
+    return (
+      <NotFound
+        title='Camper not found'
+        message='The camper you are looking for does not exist or was removed. Find another one in Catalog.'
+        buttonText='Browse catalog'
+      />
+    );
 
   return (
     <>
@@ -62,14 +66,10 @@ function ProductPage() {
         }
       />
 
-      {/* <title>{product.name} — Specs & Details | Travel Trucks</title>
-      <meta
-        name='description'
-        content={`See full specs, amenities, photos and pricing for ${product.name}. Check pickup location, choose suitable date and book it online.`}
-      /> */}
-
       <div className={css.page}>
         <div className='container'>
+          {isLoading && 'Loading...'}
+
           <h1 className='text-h2'>{product.name}</h1>
           <RatingLocationBLock product={product} />
           <p className={clsx('text-h2', css.price)}>
@@ -91,7 +91,7 @@ function ProductPage() {
               </li>
             ))}
           </ul>
-          {/* todo Image gallery */}
+
           <p className={css.desc}>{product.description}</p>
           <TabsControls />
           <div className={css.tabsBox}>

@@ -2,6 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchAllProducts, type AllProductsData } from '../../utils/api';
 import { clearProducts } from './slice';
 import type { RootState } from '../store';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export const loadProducts = createAsyncThunk<
   AllProductsData,
@@ -26,8 +28,11 @@ export const loadProducts = createAsyncThunk<
     data.items = paginatedItems;
 
     return data;
-  } catch {
-    console.log('Error caught in operations...');
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response && err.response.status === 404)
+      return rejectWithValue('');
+
+    toast.error('Something went wrong. Try again later.');
     return rejectWithValue('');
   }
 });

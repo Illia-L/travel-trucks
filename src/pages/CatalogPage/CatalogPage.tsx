@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -15,7 +15,6 @@ import { incrementPage, setFilter } from '../../redux/products/slice';
 import { useLocation } from 'react-router';
 import type { Filter } from '../../types/global';
 import { PulseLoader } from 'react-spinners';
-import toast from 'react-hot-toast';
 
 function CatalogPage() {
   const isLoading = useAppSelector(selectIsLoading);
@@ -25,14 +24,6 @@ function CatalogPage() {
   const { search } = useLocation();
   const dispatch = useAppDispatch();
   const isInitialRender = useRef(true);
-
-  const getProducts = useCallback(async () => {
-    try {
-      await dispatch(loadProducts()).unwrap();
-    } catch {
-      toast.error('Something went wrong. Try again later.');
-    }
-  }, [dispatch]);
 
   useEffect(() => {
     if (!isInitialRender.current) return;
@@ -47,20 +38,20 @@ function CatalogPage() {
 
     if (!isFilterDue) dispatch(setFilter({ ...filterFromQueryString }));
 
-    getProducts();
+    dispatch(loadProducts());
 
     isInitialRender.current = false;
-  }, [filter, search, isInitialRender, getProducts, dispatch]);
+  }, [filter, search, isInitialRender, dispatch]);
 
   const handleLoadMore = () => {
     dispatch(incrementPage());
 
-    getProducts();
+    dispatch(loadProducts());
   };
 
   return (
     <>
-      <title>Campers — Browse & Filter | Travel Trucks</title>
+      <title>Campers - Browse & Filter | Travel Trucks</title>
 
       <meta
         name='description'

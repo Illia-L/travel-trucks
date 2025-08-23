@@ -26,11 +26,7 @@ function Sidebar({ isLoading }: SidebarProps) {
     dispatch(setFilter({ page: 1 }));
     navigate(`/campers${queryString}`);
 
-    try {
-      await dispatch(loadProducts()).unwrap();
-    } catch {
-      toast.error('Something went wrong. Try again later.')
-    }
+    dispatch(loadProducts());
   };
 
   return (

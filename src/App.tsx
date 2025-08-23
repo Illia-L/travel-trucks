@@ -8,12 +8,15 @@ import ProductPage from './pages/ProductPage/ProductPage';
 import Features from './components/Features/Features';
 import Reviews from './components/Reviews/Reviews';
 import { Toaster } from 'react-hot-toast';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
     <Layout>
-      <div><Toaster position='top-right'/></div>
-      
+      <div>
+        <Toaster position='top-right' />
+      </div>
+
       <Routes>
         <Route
           path='/'
@@ -45,6 +48,11 @@ function App() {
             />
           </Route>
         </Route>
+
+        <Route
+          path='*'
+          element={<NotFoundPage />}
+        />
       </Routes>
     </Layout>
   );
