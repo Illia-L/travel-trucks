@@ -10,8 +10,8 @@ import { useOutletContext } from 'react-router';
 // }
 
 function Reviews() {
-  const product:Product = useOutletContext()
-  const reviews = product.reviews
+  const product: Product = useOutletContext();
+  const reviews = product.reviews;
 
   return (
     <ul className={css.list}>
@@ -27,10 +27,8 @@ function Reviews() {
               fgColor='var(--color-button)'
               className='text-h2'
             />
-
             <div className={css.nameRatingBox}>
               <p className='text-body2'>{review.reviewer_name}</p>
-
               <Rating
                 initialValue={review.reviewer_rating}
                 readonly
@@ -40,7 +38,6 @@ function Reviews() {
               />
             </div>
           </div>
-
           <p className={clsx('text-body', css.comment)}>{review.comment}</p>
         </li>
       ))}

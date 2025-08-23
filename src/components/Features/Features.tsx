@@ -28,11 +28,8 @@ function Features() {
   return (
     <section className={css.box}>
       <BadgeList product={product} />
-
       <h2 className={clsx('text-h3', css.detailTitle)}>Vehicle details</h2>
-
       <hr className={css.hr} />
-
       <dl className={clsx('text-body2', css.dataList)}>
         {productDetailList.map(item => (
           <div

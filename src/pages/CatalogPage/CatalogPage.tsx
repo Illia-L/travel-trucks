@@ -30,7 +30,7 @@ function CatalogPage() {
     try {
       await dispatch(loadProducts()).unwrap();
     } catch {
-       toast.error('Something went wrong. Try again later.')
+      toast.error('Something went wrong. Try again later.');
     }
   }, [dispatch]);
 
@@ -59,40 +59,45 @@ function CatalogPage() {
   };
 
   return (
-    <div className='container'>
-      <div className={css.row}>
-        <Sidebar isLoading={isLoading} />
+    <>
+      <title>Campers — Browse & Filter | Travel Trucks</title>
 
-        <div className={css.products}>
-          {!!products.length && <ProductList products={products} />}
+      <meta
+        name='description'
+        content='Explore our camper catalogue. Filter by location, transmission, beds, AC, kitchen, shower and more. Compare specs, photos and pricing.'
+      />
 
-          {!products.length && isLoading && (
-            <PulseLoader
-              size={12}
-              margin={5}
-              speedMultiplier={0.7}
-              color='#9599A1'
-              className={css.loader}
-            />
-          )}
-
-          {!products.length && !isLoading && (
-            <p className={css.notFound}>No campers found</p>
-          )}
-
-          {hasNextPage && (
-            <Button
-              className={css.loadMore}
-              variant='outline'
-              isLoading={isLoading}
-              onClick={handleLoadMore}
-            >
-              Load more
-            </Button>
-          )}
+      <div className='container'>
+        <div className={css.row}>
+          <Sidebar isLoading={isLoading} />
+          <div className={css.products}>
+            {!!products.length && <ProductList products={products} />}
+            {!products.length && isLoading && (
+              <PulseLoader
+                size={12}
+                margin={5}
+                speedMultiplier={0.7}
+                color='#9599A1'
+                className={css.loader}
+              />
+            )}
+            {!products.length && !isLoading && (
+              <p className={css.notFound}>No campers found</p>
+            )}
+            {hasNextPage && (
+              <Button
+                className={css.loadMore}
+                variant='outline'
+                isLoading={isLoading}
+                onClick={handleLoadMore}
+              >
+                Load more
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

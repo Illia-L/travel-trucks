@@ -38,6 +38,7 @@ function Header() {
                       clsx('text-body2', css.navLink, isActive && css.active)
                     }
                     to={item.to}
+                    end
                   >
                     {item.label}
                   </NavLink>

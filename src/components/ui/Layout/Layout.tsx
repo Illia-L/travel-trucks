@@ -10,7 +10,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <div className={css.app}>
       <Header />
-
+      
       <main className={css.main}>{children}</main>
     </div>
   );
