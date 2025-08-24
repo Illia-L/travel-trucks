@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import TabsControls from '../../components/TabsControls/TabsControls';
 import NotFound from '../../components/ui/NotFound/NotFound';
+import Gallery from '../../components/Gallery/Gallery';
 
 function ProductPage() {
   const [product, setProduct] = useState<Product | null | undefined>(null);
@@ -75,7 +76,13 @@ function ProductPage() {
           <p className={clsx('text-h2', css.price)}>
             {formatPrice(product.price)}
           </p>
-          <ul className={css.imageList}>
+
+          <Gallery
+            gallery={product.gallery}
+            productName={product.name}
+          />
+
+          {/* <ul className={css.imageList}>
             {product.gallery.map((imageObj, i) => (
               <li
                 className={css.imageItem}
@@ -90,7 +97,7 @@ function ProductPage() {
                 />
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <p className={css.desc}>{product.description}</p>
           <TabsControls />
