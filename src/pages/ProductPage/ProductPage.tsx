@@ -82,23 +82,6 @@ function ProductPage() {
             productName={product.name}
           />
 
-          {/* <ul className={css.imageList}>
-            {product.gallery.map((imageObj, i) => (
-              <li
-                className={css.imageItem}
-                key={i}
-              >
-                <img
-                  className={css.image}
-                  src={imageObj.thumb}
-                  alt={product.name}
-                  height={317}
-                  width={292}
-                />
-              </li>
-            ))}
-          </ul> */}
-
           <p className={css.desc}>{product.description}</p>
           <TabsControls />
           <div className={css.tabsBox}>

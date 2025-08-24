@@ -5,10 +5,6 @@ import Avatar from 'react-avatar';
 import clsx from 'clsx';
 import { useOutletContext } from 'react-router';
 
-// interface ReviewsProps {
-//   reviews: ProductReviewItem[];
-// }
-
 function Reviews() {
   const product: Product = useOutletContext();
   const reviews = product.reviews;

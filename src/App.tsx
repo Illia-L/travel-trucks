@@ -1,14 +1,16 @@
-import Layout from './components/ui/Layout/Layout';
 import { Route, Routes } from 'react-router';
-import HomePage from './pages/HomePage/HomePage';
-import CatalogPage from './pages/CatalogPage/CatalogPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './redux/store';
-import ProductPage from './pages/ProductPage/ProductPage';
-import Features from './components/Features/Features';
-import Reviews from './components/Reviews/Reviews';
 import { Toaster } from 'react-hot-toast';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import { lazy } from 'react';
+import Layout from './components/ui/Layout/Layout';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const CatalogPage = lazy(() => import('./pages/CatalogPage/CatalogPage'));
+const ProductPage = lazy(() => import('./pages/ProductPage/ProductPage'));
+const Features = lazy(() => import('./components/Features/Features'));
+const Reviews = lazy(() => import('./components/Reviews/Reviews'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
   return (

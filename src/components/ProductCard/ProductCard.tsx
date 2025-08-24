@@ -62,7 +62,6 @@ function ProductCard({ product }: ProductCardProps) {
         <p className={clsx('text-body', css.description)}>
           {product.description}
         </p>
-        {/* todo Make description cut with elipsis */}
 
         <div className={css.badgesBox}>
           <BadgeList product={product} />

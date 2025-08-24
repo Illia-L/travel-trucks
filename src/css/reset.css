@@ -53,7 +53,6 @@ button {
 
 input,
 textarea {
-  /* all: unset; */
   font: inherit;
   color: inherit;
   background: none;

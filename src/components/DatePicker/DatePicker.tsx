@@ -96,7 +96,6 @@ function DatePicker({ selectedDate, onPickDate }: DatePickerProps) {
               css.dateButton,
               dateStr === selectedDate && css.selected,
               (+dateStr.split('-')[1] !== currentMonthNumber + 1) && css.otherMonthDate
-              // todo Style dates of not current month according to design
             )}
             type='button'
             key={dateStr}

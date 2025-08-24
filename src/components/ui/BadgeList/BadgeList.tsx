@@ -20,8 +20,6 @@ type BadgeId =
   | 'gas'
   | 'water';
 
-// type BadgeId = keyof ProductBadgeKeys;
-
 type Badge = {
   id: BadgeId;
   shouldShow: boolean | ((product: Product) => boolean);

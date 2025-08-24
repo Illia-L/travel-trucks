@@ -9,10 +9,6 @@ type ProductDetailItem = keyof Pick<
   'form' | 'length' | 'width' | 'height' | 'tank' | 'consumption'
 >;
 
-// interface FeaturesProps {
-//   product: Product;
-// }
-
 const productDetailList: ProductDetailItem[] = [
   'form',
   'length',
